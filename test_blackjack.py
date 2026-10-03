@@ -35,3 +35,9 @@ def test_mao_pode_adicionar_carta():
     mao.adicionar_carta(carta)
     assert len(mao.cartas) == 1
     assert mao.cartas[0] == carta
+
+def test_calcular_pontos_com_cartas_numericas():
+    mao = Mao()
+    mao.adicionar_carta(Carta("Copas", "2"))
+    mao.adicionar_carta(Carta("Ouros", "5"))
+    assert mao.calcular_pontos() == 7
