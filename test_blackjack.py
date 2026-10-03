@@ -141,3 +141,30 @@ def test_turno_dealer_compra_cartas_ate_atingir_pelo_menos_17():
     jogo.turno_dealer()
     
     assert jogo.dealer.mao.calcular_pontos() >= 17
+
+def test_avaliar_vencedor_jogador_vence_quando_tem_mais_pontos():
+    jogador = Jogador("Alice")
+    jogo = JogoBlackjack(jogador)
+    jogo.jogador.mao.adicionar_carta(Carta("Copas", "10"))
+    jogo.jogador.mao.adicionar_carta(Carta("Ouros", "10"))  # 20
+    jogo.dealer.mao.adicionar_carta(Carta("Paus", "10"))
+    jogo.dealer.mao.adicionar_carta(Carta("Espadas", "8"))   # 18
+    assert jogo.avaliar_vencedor() == "Jogador"
+
+def test_avaliar_vencedor_dealer_vence_se_jogador_estourar():
+    jogador = Jogador("Alice")
+    jogo = JogoBlackjack(jogador)
+    jogo.jogador.mao.adicionar_carta(Carta("Copas", "10"))
+    jogo.jogador.mao.adicionar_carta(Carta("Ouros", "10"))
+    jogo.jogador.mao.adicionar_carta(Carta("Paus", "5"))   # 25 (Estourou)
+    assert jogo.avaliar_vencedor() == "Dealer"
+
+def test_avaliar_vencedor_empate_pontos_iguais():
+    jogador = Jogador("Alice")
+    jogo = JogoBlackjack(jogador)
+    jogo.jogador.mao.adicionar_carta(Carta("Copas", "10"))
+    jogo.jogador.mao.adicionar_carta(Carta("Ouros", "9"))  # 19
+    jogo.dealer.mao.adicionar_carta(Carta("Paus", "10"))
+    jogo.dealer.mao.adicionar_carta(Carta("Espadas", "9"))  # 19
+    assert jogo.avaliar_vencedor() == "Empate"
+

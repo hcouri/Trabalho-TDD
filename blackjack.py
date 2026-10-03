@@ -93,3 +93,18 @@ class JogoBlackjack:
     def turno_dealer(self):
         while self.dealer.deve_pedir_carta():
             self.dealer.mao.adicionar_carta(self.baralho.comprar())
+
+    def avaliar_vencedor(self):
+        if self.jogador.mao.estourou():
+            return "Dealer"
+        if self.dealer.mao.estourou():
+            return "Jogador"
+        
+        pts_jogador = self.jogador.mao.calcular_pontos()
+        pts_dealer = self.dealer.mao.calcular_pontos()
+
+        if pts_jogador > pts_dealer:
+            return "Jogador"
+        if pts_dealer > pts_jogador:
+            return "Dealer"
+        return "Empate"
