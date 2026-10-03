@@ -168,3 +168,41 @@ def test_avaliar_vencedor_empate_pontos_iguais():
     jogo.dealer.mao.adicionar_carta(Carta("Espadas", "9"))  # 19
     assert jogo.avaliar_vencedor() == "Empate"
 
+def test_pagar_aposta_vitoria_normal_paga_1_para_1():
+    jogador = Jogador("Alice", fichas=100)
+    jogo = JogoBlackjack(jogador)
+    jogador.fazer_aposta(20)
+    
+    jogo.jogador.mao.adicionar_carta(Carta("Copas", "10"))
+    jogo.jogador.mao.adicionar_carta(Carta("Ouros", "9"))
+    jogo.dealer.mao.adicionar_carta(Carta("Paus", "10"))
+    jogo.dealer.mao.adicionar_carta(Carta("Espadas", "8"))
+    
+    jogo.pagar_aposta(20)
+    assert jogador.fichas == 120
+
+def test_pagar_aposta_blackjack_natural_paga_3_para_2():
+    jogador = Jogador("Alice", fichas=100)
+    jogo = JogoBlackjack(jogador)
+    jogador.fazer_aposta(20)
+    
+    jogo.jogador.mao.adicionar_carta(Carta("Copas", "A"))
+    jogo.jogador.mao.adicionar_carta(Carta("Ouros", "K"))
+    jogo.dealer.mao.adicionar_carta(Carta("Paus", "10"))
+    jogo.dealer.mao.adicionar_carta(Carta("Espadas", "8"))
+    
+    jogo.pagar_aposta(20)
+    assert jogador.fichas == 130
+
+def test_pagar_aposta_empate_devolve_aposta():
+    jogador = Jogador("Alice", fichas=100)
+    jogo = JogoBlackjack(jogador)
+    jogador.fazer_aposta(20)
+    
+    jogo.jogador.mao.adicionar_carta(Carta("Copas", "10"))
+    jogo.jogador.mao.adicionar_carta(Carta("Ouros", "9"))
+    jogo.dealer.mao.adicionar_carta(Carta("Paus", "10"))
+    jogo.dealer.mao.adicionar_carta(Carta("Espadas", "9"))
+    
+    jogo.pagar_aposta(20)
+    assert jogador.fichas == 100

@@ -108,3 +108,13 @@ class JogoBlackjack:
         if pts_dealer > pts_jogador:
             return "Dealer"
         return "Empate"
+
+    def pagar_aposta(self, aposta):
+        vencedor = self.avaliar_vencedor()
+        if vencedor == "Jogador":
+            if self.jogador.mao.eh_blackjack():
+                self.jogador.receber_ganhos(int(aposta * 2.5))
+            else:
+                self.jogador.receber_ganhos(aposta * 2)
+        elif vencedor == "Empate":
+            self.jogador.receber_ganhos(aposta)
