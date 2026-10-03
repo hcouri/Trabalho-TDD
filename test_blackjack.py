@@ -104,3 +104,12 @@ def test_dealer_inicia_com_nome_padrao_e_mao():
     assert dealer.nome == "Dealer"
     assert isinstance(dealer.mao, Mao)
     assert len(dealer.mao.cartas) == 0
+
+def test_dealer_deve_pedir_carta_se_pontos_menor_que_17():
+    dealer = Dealer()
+    dealer.mao.adicionar_carta(Carta("Copas", "10"))
+    dealer.mao.adicionar_carta(Carta("Ouros", "6"))
+    assert dealer.deve_pedir_carta() is True
+
+    dealer.mao.adicionar_carta(Carta("Paus", "2"))
+    assert dealer.deve_pedir_carta() is False

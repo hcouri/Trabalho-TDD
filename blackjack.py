@@ -71,3 +71,6 @@ class Jogador:
 class Dealer(Jogador):
     def __init__(self):
         super().__init__(nome="Dealer", fichas=0)
+
+    def deve_pedir_carta(self):
+        return self.mao.calcular_pontos() < 17
