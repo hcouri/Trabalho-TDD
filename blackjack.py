@@ -74,3 +74,16 @@ class Dealer(Jogador):
 
     def deve_pedir_carta(self):
         return self.mao.calcular_pontos() < 17
+
+class JogoBlackjack:
+    def __init__(self, jogador):
+        self.baralho = Baralho()
+        self.baralho.embaralhar()
+        self.jogador = jogador
+        self.dealer = Dealer()
+
+    def distribuir_cartas_iniciais(self):
+        self.jogador.mao.adicionar_carta(self.baralho.comprar())
+        self.dealer.mao.adicionar_carta(self.baralho.comprar())
+        self.jogador.mao.adicionar_carta(self.baralho.comprar())
+        self.dealer.mao.adicionar_carta(self.baralho.comprar())

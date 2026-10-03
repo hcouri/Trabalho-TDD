@@ -1,5 +1,5 @@
 import pytest
-from blackjack import Carta, Baralho, Mao, Jogador, Dealer
+from blackjack import Carta, Baralho, Mao, Jogador, Dealer, JogoBlackjack
 
 def test_criar_carta_com_naipe_e_valor():
     carta = Carta("Copas", "A")
@@ -113,3 +113,12 @@ def test_dealer_deve_pedir_carta_se_pontos_menor_que_17():
 
     dealer.mao.adicionar_carta(Carta("Paus", "2"))
     assert dealer.deve_pedir_carta() is False
+
+def test_jogo_distribui_duas_cartas_iniciais_para_jogador_e_dealer():
+    jogador = Jogador("Alice", fichas=100)
+    jogo = JogoBlackjack(jogador)
+    jogo.distribuir_cartas_iniciais()
+
+    assert len(jogo.jogador.mao.cartas) == 2
+    assert len(jogo.dealer.mao.cartas) == 2
+    assert len(jogo.baralho.cartas) == 48
