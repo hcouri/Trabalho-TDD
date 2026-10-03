@@ -131,3 +131,13 @@ def test_jogador_pode_pedir_carta():
 
     assert len(jogo.jogador.mao.cartas) == 3
     assert len(jogo.baralho.cartas) == 47
+
+def test_turno_dealer_compra_cartas_ate_atingir_pelo_menos_17():
+    jogador = Jogador("Alice", fichas=100)
+    jogo = JogoBlackjack(jogador)
+    jogo.dealer.mao.adicionar_carta(Carta("Copas", "5"))
+    jogo.dealer.mao.adicionar_carta(Carta("Ouros", "5"))  # Total = 10 (< 17)
+    
+    jogo.turno_dealer()
+    
+    assert jogo.dealer.mao.calcular_pontos() >= 17

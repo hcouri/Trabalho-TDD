@@ -89,3 +89,7 @@ class JogoBlackjack:
 
     def jogador_pedir_carta(self):
         self.jogador.mao.adicionar_carta(self.baralho.comprar())
+
+    def turno_dealer(self):
+        while self.dealer.deve_pedir_carta():
+            self.dealer.mao.adicionar_carta(self.baralho.comprar())
