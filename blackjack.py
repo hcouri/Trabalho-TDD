@@ -31,4 +31,6 @@ class Mao:
         for carta in self.cartas:
             if carta.valor.isdigit():
                 pontos += int(carta.valor)
+            elif carta.valor in ["J", "Q", "K"]:
+                pontos += 10
         return pontos
