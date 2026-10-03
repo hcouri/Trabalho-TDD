@@ -17,3 +17,6 @@ class Baralho:
 
     def embaralhar(self):
         random.shuffle(self.cartas)
+
+    def comprar(self):
+        return self.cartas.pop()

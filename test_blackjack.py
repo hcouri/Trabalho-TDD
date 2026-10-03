@@ -14,3 +14,9 @@ def test_baralho_pode_ser_embaralhado():
     baralho2 = Baralho()
     baralho2.embaralhar()
     assert baralho1.cartas != baralho2.cartas
+
+def test_baralho_pode_comprar_carta():
+    baralho = Baralho()
+    carta = baralho.comprar()
+    assert isinstance(carta, Carta)
+    assert len(baralho.cartas) == 51
