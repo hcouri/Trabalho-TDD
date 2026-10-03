@@ -1,4 +1,4 @@
-from blackjack import Carta, Baralho, Mao
+from blackjack import Carta, Baralho, Mao, Jogador
 
 def test_criar_carta_com_naipe_e_valor():
     carta = Carta("Copas", "A")
@@ -74,3 +74,10 @@ def test_mao_eh_blackjack_com_duas_cartas_somando_21():
     mao.adicionar_carta(Carta("Copas", "A"))
     mao.adicionar_carta(Carta("Ouros", "K"))
     assert mao.eh_blackjack() is True
+
+def test_jogador_inicia_com_nome_mao_e_fichas():
+    jogador = Jogador("Zeca", fichas=100)
+    assert jogador.nome == "Zeca"
+    assert jogador.fichas == 100
+    assert isinstance(jogador.mao, Mao)
+    assert len(jogador.mao.cartas) == 0

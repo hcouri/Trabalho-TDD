@@ -50,3 +50,9 @@ class Mao:
 
     def eh_blackjack(self):
         return len(self.cartas) == 2 and self.calcular_pontos() == 21
+
+class Jogador:
+    def __init__(self, nome, fichas=100):
+        self.nome = nome
+        self.fichas = fichas
+        self.mao = Mao()
