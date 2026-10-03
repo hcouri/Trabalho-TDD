@@ -1,4 +1,4 @@
-from blackjack import Carta, Baralho
+from blackjack import Carta, Baralho, Mao
 
 def test_criar_carta_com_naipe_e_valor():
     carta = Carta("Copas", "A")
@@ -20,3 +20,7 @@ def test_baralho_pode_comprar_carta():
     carta = baralho.comprar()
     assert isinstance(carta, Carta)
     assert len(baralho.cartas) == 51
+
+def test_mao_inicia_sem_cartas():
+    mao = Mao()
+    assert len(mao.cartas) == 0

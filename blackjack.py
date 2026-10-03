@@ -20,3 +20,7 @@ class Baralho:
 
     def comprar(self):
         return self.cartas.pop()
+
+class Mao:
+    def __init__(self):
+        self.cartas = []
