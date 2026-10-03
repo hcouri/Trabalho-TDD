@@ -68,3 +68,9 @@ def test_mao_estourou_quando_pontos_maior_que_21():
     mao.adicionar_carta(Carta("Ouros", "K"))
     mao.adicionar_carta(Carta("Paus", "5"))
     assert mao.estourou() is True
+
+def test_mao_eh_blackjack_com_duas_cartas_somando_21():
+    mao = Mao()
+    mao.adicionar_carta(Carta("Copas", "A"))
+    mao.adicionar_carta(Carta("Ouros", "K"))
+    assert mao.eh_blackjack() is True
