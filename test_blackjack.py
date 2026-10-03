@@ -122,3 +122,12 @@ def test_jogo_distribui_duas_cartas_iniciais_para_jogador_e_dealer():
     assert len(jogo.jogador.mao.cartas) == 2
     assert len(jogo.dealer.mao.cartas) == 2
     assert len(jogo.baralho.cartas) == 48
+
+def test_jogador_pode_pedir_carta():
+    jogador = Jogador("Alice", fichas=100)
+    jogo = JogoBlackjack(jogador)
+    jogo.distribuir_cartas_iniciais()
+    jogo.jogador_pedir_carta()
+
+    assert len(jogo.jogador.mao.cartas) == 3
+    assert len(jogo.baralho.cartas) == 47

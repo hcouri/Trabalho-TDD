@@ -83,7 +83,9 @@ class JogoBlackjack:
         self.dealer = Dealer()
 
     def distribuir_cartas_iniciais(self):
+        for _ in range(2):
+            self.jogador.mao.adicionar_carta(self.baralho.comprar())
+            self.dealer.mao.adicionar_carta(self.baralho.comprar())
+
+    def jogador_pedir_carta(self):
         self.jogador.mao.adicionar_carta(self.baralho.comprar())
-        self.dealer.mao.adicionar_carta(self.baralho.comprar())
-        self.jogador.mao.adicionar_carta(self.baralho.comprar())
-        self.dealer.mao.adicionar_carta(self.baralho.comprar())
