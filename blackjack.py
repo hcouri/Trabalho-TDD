@@ -36,4 +36,11 @@ class Mao:
         self.cartas.append(carta)
 
     def calcular_pontos(self):
-        return sum(carta.obter_valor_base() for carta in self.cartas)
+        pontos = sum(carta.obter_valor_base() for carta in self.cartas)
+        aces = sum(1 for carta in self.cartas if carta.valor == "A")
+        
+        while pontos > 21 and aces > 0:
+            pontos -= 10
+            aces -= 1
+            
+        return pontos
