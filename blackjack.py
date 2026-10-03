@@ -118,3 +118,9 @@ class JogoBlackjack:
                 self.jogador.receber_ganhos(aposta * 2)
         elif vencedor == "Empate":
             self.jogador.receber_ganhos(aposta)
+
+    def reiniciar_rodada(self):
+        self.jogador.mao = Mao()
+        self.dealer.mao = Mao()
+        self.baralho = Baralho()
+        self.baralho.embaralhar()

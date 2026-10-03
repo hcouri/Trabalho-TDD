@@ -206,3 +206,14 @@ def test_pagar_aposta_empate_devolve_aposta():
     
     jogo.pagar_aposta(20)
     assert jogador.fichas == 100
+
+def test_reiniciar_rodada_limpa_maos_e_renova_baralho():
+    jogador = Jogador("Alice", fichas=100)
+    jogo = JogoBlackjack(jogador)
+    jogo.distribuir_cartas_iniciais()
+
+    jogo.reiniciar_rodada()
+
+    assert len(jogo.jogador.mao.cartas) == 0
+    assert len(jogo.dealer.mao.cartas) == 0
+    assert len(jogo.baralho.cartas) == 52
