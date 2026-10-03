@@ -48,3 +48,9 @@ def test_calcular_pontos_com_figuras():
     mao.adicionar_carta(Carta("Ouros", "Q"))
     mao.adicionar_carta(Carta("Paus", "K"))
     assert mao.calcular_pontos() == 30
+
+def test_calcular_pontos_com_as_valendo_11():
+    mao = Mao()
+    mao.adicionar_carta(Carta("Copas", "A"))
+    mao.adicionar_carta(Carta("Ouros", "9"))
+    assert mao.calcular_pontos() == 20

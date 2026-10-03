@@ -5,6 +5,15 @@ class Carta:
         self.naipe = naipe
         self.valor = valor
 
+    def obter_valor_base(self):
+        if self.valor.isdigit():
+            return int(self.valor)
+        if self.valor in ["J", "Q", "K"]:
+            return 10
+        if self.valor == "A":
+            return 11
+        return 0
+
 class Baralho:
     def __init__(self, preencher=True):
         self.cartas = []
@@ -27,10 +36,4 @@ class Mao:
         self.cartas.append(carta)
 
     def calcular_pontos(self):
-        pontos = 0
-        for carta in self.cartas:
-            if carta.valor.isdigit():
-                pontos += int(carta.valor)
-            elif carta.valor in ["J", "Q", "K"]:
-                pontos += 10
-        return pontos
+        return sum(carta.obter_valor_base() for carta in self.cartas)
