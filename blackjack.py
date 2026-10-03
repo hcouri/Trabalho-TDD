@@ -1,3 +1,5 @@
+import random
+
 class Carta:
     def __init__(self, naipe, valor):
         self.naipe = naipe
@@ -12,3 +14,6 @@ class Baralho:
         for n in naipes:
             for v in valores:
                 self.cartas.append(Carta(n, v))
+
+    def embaralhar(self):
+        random.shuffle(self.cartas)
