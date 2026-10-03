@@ -5,6 +5,10 @@ def test_criar_carta_com_naipe_e_valor():
     assert carta.naipe == "Copas"
     assert carta.valor == "A"
 
+def test_baralho_inicia_sem_cartas():
+    baralho = Baralho(preencher=False)
+    assert len(baralho.cartas) == 0
+
 def test_baralho_inicia_com_52_cartas():
     baralho = Baralho()
     assert len(baralho.cartas) == 52
@@ -24,3 +28,10 @@ def test_baralho_pode_comprar_carta():
 def test_mao_inicia_sem_cartas():
     mao = Mao()
     assert len(mao.cartas) == 0
+
+def test_mao_pode_adicionar_carta():
+    mao = Mao()
+    carta = Carta("Copas", "A")
+    mao.adicionar_carta(carta)
+    assert len(mao.cartas) == 1
+    assert mao.cartas[0] == carta

@@ -6,14 +6,14 @@ class Carta:
         self.valor = valor
 
 class Baralho:
-    def __init__(self):
-        naipes = ['Copas', 'Ouros', 'Paus', 'Espadas']
-        valores = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-        
+    def __init__(self, preencher=True):
         self.cartas = []
-        for n in naipes:
-            for v in valores:
-                self.cartas.append(Carta(n, v))
+        if preencher:
+            naipes = ['Copas', 'Ouros', 'Paus', 'Espadas']
+            valores = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+            for n in naipes:
+                for v in valores:
+                    self.cartas.append(Carta(n, v))
 
     def embaralhar(self):
         random.shuffle(self.cartas)
@@ -24,3 +24,6 @@ class Baralho:
 class Mao:
     def __init__(self):
         self.cartas = []
+
+    def adicionar_carta(self, carta):
+        self.cartas.append(carta)
