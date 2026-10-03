@@ -67,3 +67,7 @@ class Jogador:
 
     def receber_ganhos(self, valor):
         self.fichas += valor
+
+class Dealer(Jogador):
+    def __init__(self):
+        super().__init__(nome="Dealer", fichas=0)

@@ -1,5 +1,5 @@
 import pytest
-from blackjack import Carta, Baralho, Mao, Jogador
+from blackjack import Carta, Baralho, Mao, Jogador, Dealer
 
 def test_criar_carta_com_naipe_e_valor():
     carta = Carta("Copas", "A")
@@ -98,3 +98,9 @@ def test_jogador_pode_receber_ganhos():
     jogador = Jogador("Alice", fichas=100)
     jogador.receber_ganhos(50)
     assert jogador.fichas == 150
+
+def test_dealer_inicia_com_nome_padrao_e_mao():
+    dealer = Dealer()
+    assert dealer.nome == "Dealer"
+    assert isinstance(dealer.mao, Mao)
+    assert len(dealer.mao.cartas) == 0
