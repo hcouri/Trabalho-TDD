@@ -56,3 +56,9 @@ class Jogador:
         self.nome = nome
         self.fichas = fichas
         self.mao = Mao()
+
+    def fazer_aposta(self, valor):
+        if valor > self.fichas:
+            raise ValueError("Fichas insuficientes")
+        self.fichas -= valor
+        return valor

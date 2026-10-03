@@ -81,3 +81,9 @@ def test_jogador_inicia_com_nome_mao_e_fichas():
     assert jogador.fichas == 100
     assert isinstance(jogador.mao, Mao)
     assert len(jogador.mao.cartas) == 0
+
+def test_jogador_pode_fazer_aposta_valida():
+    jogador = Jogador("Bob", fichas=100)
+    aposta = jogador.fazer_aposta(20)
+    assert aposta == 20
+    assert jogador.fichas == 80
