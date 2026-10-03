@@ -93,3 +93,8 @@ def test_jogador_nao_pode_apostar_mais_do_que_possui():
     jogador = Jogador("Bob", fichas=50)
     with pytest.raises(ValueError, match="Fichas insuficientes"):
         jogador.fazer_aposta(100)
+
+def test_jogador_pode_receber_ganhos():
+    jogador = Jogador("Alice", fichas=100)
+    jogador.receber_ganhos(50)
+    assert jogador.fichas == 150

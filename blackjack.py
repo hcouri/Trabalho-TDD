@@ -64,3 +64,6 @@ class Jogador:
             raise ValueError("Fichas insuficientes")
         self.fichas -= valor
         return valor
+
+    def receber_ganhos(self, valor):
+        self.fichas += valor
