@@ -61,3 +61,10 @@ def test_calcular_pontos_com_as_valendo_1_se_estourar():
     mao.adicionar_carta(Carta("Ouros", "K"))
     mao.adicionar_carta(Carta("Paus", "Q"))
     assert mao.calcular_pontos() == 21
+
+def test_mao_estourou_quando_pontos_maior_que_21():
+    mao = Mao()
+    mao.adicionar_carta(Carta("Copas", "10"))
+    mao.adicionar_carta(Carta("Ouros", "K"))
+    mao.adicionar_carta(Carta("Paus", "5"))
+    assert mao.estourou() is True

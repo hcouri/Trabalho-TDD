@@ -44,3 +44,6 @@ class Mao:
             aces -= 1
             
         return pontos
+
+    def estourou(self):
+        return self.calcular_pontos() > 21
