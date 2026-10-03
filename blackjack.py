@@ -58,6 +58,8 @@ class Jogador:
         self.mao = Mao()
 
     def fazer_aposta(self, valor):
+        if valor <= 0:
+            raise ValueError("O valor da aposta deve ser positivo")
         if valor > self.fichas:
             raise ValueError("Fichas insuficientes")
         self.fichas -= valor

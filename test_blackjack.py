@@ -1,3 +1,4 @@
+import pytest
 from blackjack import Carta, Baralho, Mao, Jogador
 
 def test_criar_carta_com_naipe_e_valor():
@@ -87,3 +88,8 @@ def test_jogador_pode_fazer_aposta_valida():
     aposta = jogador.fazer_aposta(20)
     assert aposta == 20
     assert jogador.fichas == 80
+
+def test_jogador_nao_pode_apostar_mais_do_que_possui():
+    jogador = Jogador("Bob", fichas=50)
+    with pytest.raises(ValueError, match="Fichas insuficientes"):
+        jogador.fazer_aposta(100)
